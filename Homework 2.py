@@ -15,7 +15,7 @@ class TreeNode:
 
     def display(self):
     	"""
-    	QUESTION TWO(d)
+		QUESTION TWO(d)
 		write a function that prints out the tree how you choose
 		will be called with 
 		my_tree.display()
@@ -57,5 +57,5 @@ class TreeNode:
 
 # QUESTION FIVE - count the number of leaf nodes in the tree above
 
-
+# ... replace the pass with your own code
 
