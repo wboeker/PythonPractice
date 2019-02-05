@@ -1,0 +1,10 @@
+if you're doing extra work - red flagz!!!
+
+check types - esp when doing equalzzz!
+
+class functions need self.
+
+don't use stuff before defining stuff!
+
+
+
