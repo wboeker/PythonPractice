@@ -8,7 +8,7 @@ class TreeNode:
 		if self.right == None:
 			self.right = TreeNode(newNode)
 		else:
-			#insertRight(self.right, newNode)
+			insertRight(self.right, newNode)
 	def insertLeft (self,newNode):
 		if self.left == None:
 			self.left = TreeNode(newNode)
