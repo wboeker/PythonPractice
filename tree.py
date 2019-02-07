@@ -1,19 +1,19 @@
 # Definition for a binary tree node.
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+	def __init__(self, x):
+		self.val = x
+		self.left = None
+		self.right = None
 	def insertRight(self,newNode):
 		if self.right == None:
 			self.right = TreeNode(newNode)
 		else:
-			insertRight(self.right, newNode)
+			self.right.insertRight(newNode)
 	def insertLeft (self,newNode):
 		if self.left == None:
 			self.left = TreeNode(newNode)
 		else:
-			insertLeft(self.left, newNode)
+			self.left.insertLeft(newNode)
 
 #build Bob Jr Tree from Slides in code and print out
 #traverse tree in 3 ways and print out traversals
@@ -61,28 +61,28 @@ postTraverse(BobJrTree)
 
 #build big number tree
 
-"""
+
 numberTree = TreeNode(25)
-insertRight(TreeNode,50)
-insertRight(TreeNode,70)
-insertRight(TreeNode,90)
-insertLeft(TreeNode,15)
-insertLeft(TreeNode,10)
-insertLeft(TreeNode,4)
-leftNum = TreeNode.left
-rightNum = TreeNode.right
-insertRight(leftNum,22)
-insertRight(leftNum,24)
-insertLeft(rightNum,35)
-insertLeft(rightNum,31)
+numberTree.insertRight(50)
+numberTree.insertRight(70)
+numberTree.insertRight(90)
+numberTree.insertLeft(15)
+numberTree.insertLeft(10)
+numberTree.insertLeft(4)
+leftNum = numberTree.left
+rightNum = numberTree.right
+leftNum.insertRight(22)
+leftNum.insertRight(24)
+rightNum.insertLeft(35)
+rightNum.insertLeft(31)
 leftNum2 = leftNum.left
 rightNum2 = rightNum.right
-insertRight(leftNum2,12)
-insertLeft(rightNum2,66)
+leftNum2.insertRight(12)
+rightNum2.insertLeft(66)
 leftRight = leftNum.right
 rightLeft = rightNum.left
-insertLeft(leftRight,18)
-insertRight(rightLeft,44)
+leftRight.insertLeft(18)
+rightLeft.insertRight(44)
 
 #repeat traversals
 ioTraverse(numberTree)
@@ -90,4 +90,4 @@ print()
 preTraverse(numberTree)
 print()
 postTraverse(numberTree)
-"""
+
