@@ -1,6 +1,12 @@
 # Homework 3
 # 45-60 min
 
+def reverse(s):
+		reverseStr = ""
+		for letter in s:
+			reverseStr = letter + reverseStr
+		return reverseStr
+
 def line_by_line(s):
 	"""
 	QUESTION 1
@@ -19,7 +25,11 @@ def line_by_line(s):
 		a
 		m
 	"""
-	pass
+
+	for letter in s:
+		print(letter)
+	for letter in reverse(s):
+		print(letter)
 
 def one_two_one(s):
 	"""
@@ -30,9 +40,16 @@ def one_two_one(s):
 		12321
 		1234321
 			... for the string '1234'
-
 	"""
-	pass
+
+	for i in range(len(s)):
+		shortStr = s[0:i + 1]
+		print(shortStr,reverse(shortStr)[1:len(shortStr)], sep='')
+
+	# print(s[0])
+	# print(s[0:2],s[0])
+	# print(s[0:3],s[1],s[0])
+	# print(s[0:4],s[2],s[1],s[0])
 
 def is_palindrome(s):
 	"""
@@ -42,7 +59,12 @@ def is_palindrome(s):
 		is_palindrome("racecar")
 		assume no spaces
 	"""
-	pass
+	reverse(s)
+	if s == reverse(s):
+		return True
+	else:
+		return False
+	
 
 def is_palindrome_with_spaces(s):
 	"""
@@ -51,7 +73,10 @@ def is_palindrome_with_spaces(s):
 		spaces should be ignored
 		is_palindrome_with_spaces(" madam im adam         ")
 	"""
-	pass
+	#remove whitespace
+	s = ''.join(s.split())
+
+	return is_palindrome(s)
 
 def find_palindrome_pivot(s):
 	"""
@@ -65,4 +90,27 @@ def find_palindrome_pivot(s):
 		find_palindrome_pivot("lollol")
 			>>> 2 - because it's 2 and 3 that are the pivots.
 	"""
-	pass
+	#initialize index
+	index = 0
+
+	#remove whitespace
+	noWhitespace = ''.join(s.split())
+
+	if s == noWhitespace:
+		#if length is even, divide length in 2 and subtract 1, else divide by 2
+		if len(noWhitespace) %2 == 0:
+			index = int(len(noWhitespace)/2) - 1
+		else:
+			index = int(len(noWhitespace)/2)
+	else:
+		#count number of spaces in s
+		spaceCount = 0
+		index += spaceCount
+
+	return index
+	
+line_by_line("mango")
+one_two_one("1234")
+print(is_palindrome("racecars"))
+print(is_palindrome_with_spaces("race car"))
+print(find_palindrome_pivot("lollol"))
