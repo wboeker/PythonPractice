@@ -92,25 +92,30 @@ def find_palindrome_pivot(s):
 	"""
 	#initialize index
 	index = 0
+	count = 0
 
 	#remove whitespace
 	noWhitespace = ''.join(s.split())
 
-	if s == noWhitespace:
-		#if length is even, divide length in 2 and subtract 1, else divide by 2
-		if len(noWhitespace) %2 == 0:
-			index = int(len(noWhitespace)/2) - 1
-		else:
-			index = int(len(noWhitespace)/2)
+	
+	#if length is even, divide length in 2 and subtract 1, else divide by 2
+	if len(noWhitespace) %2 == 0:
+		index = int(len(noWhitespace)/2) - 1
 	else:
-		#count number of spaces in s
-		spaceCount = 0
-		index += spaceCount
-
+		index = int(len(noWhitespace)/2)
+	
+	if s != noWhitespace:
+		for i in range(len(s)):
+			if s[i] != " ":
+				count += 1
+				if count == index + 1:
+					index = i
+					break		
 	return index
 	
 line_by_line("mango")
 one_two_one("1234")
 print(is_palindrome("racecars"))
 print(is_palindrome_with_spaces("race car"))
-print(find_palindrome_pivot("lollol"))
+#find_palindrome_pivot(" madam im adam         ")
+print(find_palindrome_pivot(" madam im adam         "))
