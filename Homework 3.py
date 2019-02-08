@@ -2,10 +2,7 @@
 # 45-60 min
 
 def reverse(s):
-		reverseStr = ""
-		for letter in s:
-			reverseStr = letter + reverseStr
-		return reverseStr
+		return s[::-1]
 
 def line_by_line(s):
 	"""
@@ -44,7 +41,7 @@ def one_two_one(s):
 
 	for i in range(len(s)):
 		shortStr = s[0:i + 1]
-		print(shortStr,reverse(shortStr)[1:len(shortStr)], sep='')
+		print(shortStr + reverse(shortStr)[1:])
 
 	# print(s[0])
 	# print(s[0:2],s[0])
@@ -59,12 +56,7 @@ def is_palindrome(s):
 		is_palindrome("racecar")
 		assume no spaces
 	"""
-	reverse(s)
-	if s == reverse(s):
-		return True
-	else:
-		return False
-	
+	return s == reverse(s)
 
 def is_palindrome_with_spaces(s):
 	"""
