@@ -17,8 +17,8 @@ def syllables_indices(s, indices):
 		use [::] in your answer friend :)
 
 	"""
-	pass
-
+	for index in indices:
+		print(s[index:index+3])
 
 def find_pairs(words_dict):
 	"""
@@ -33,8 +33,8 @@ def find_pairs(words_dict):
 		>>> c maps to 3
 		
 	"""
-	pass
-
+	for key,value in words_dict.items():
+		print(key + " maps to " + str(value))
 
 def secret_code(code, message):
 	"""
@@ -54,8 +54,11 @@ def secret_code(code, message):
 		>>> I want to hug my cal bear now
 
 	"""
-	pass
-	
+	for word in enumerate(message, start=1):
+		for key,value in code.items():
+			if word == key:
+				message = value
+	return message
 
 def count_unique_words(s):
 	"""
@@ -67,7 +70,15 @@ def count_unique_words(s):
 		s = "This is a string with a lot of strings."
 		>>> 8
 	"""
-	pass
+	words = s.split()
+	uniqueHash = {}
+	for word in words:
+		if word in uniqueHash:
+			uniqueHash[word] += 1
+		else:
+			uniqueHash[word] = 1
+
+	return len(uniqueHash)
 
 def count_letters(s):
 	"""
@@ -78,4 +89,36 @@ def count_letters(s):
 		s = "i am a lazy egg"
 		>>> {'a': 3, "i", 1, "m": 1, "l": 1, "z": 1, "e": 1, "y": 1, "g": 2}
 	"""
-	pass
+	uniqueHash = {}
+	for letter in s:
+		if letter != ' ':
+			if letter in uniqueHash:
+				uniqueHash[letter] += 1
+			else:
+				uniqueHash[letter] = 1
+
+	return uniqueHash
+
+
+testArray = [0, 0, 3, 6]
+syllables_indices("wendeebayker", testArray)
+testDict = {}
+testDict["a"] = 1
+testDict["b"] = 2
+testDict["c"] = 3
+find_pairs(testDict)
+
+code = {
+	"mango": "hug",
+	"tea": "now",
+	"mr.": "bear",
+	"bear": "cal"
+	}
+
+message = ["I", "want", "to", "mango", "my", "bear", "mr.", "tea"]
+
+print(secret_code(code, message))
+
+print(count_unique_words("This is a string with a lot of strings."))
+print(count_letters("i am a lazy egg"))
+
