@@ -10,7 +10,20 @@ def climb_stairs(num_steps, step_size):
 		climb_stairs(17, 1) ==> 17
 		climb_stairs(18, 4) ==> 5 (4 steps to get to the 16th step, then one more)
 	"""
-	pass
+
+	steps_taken = num_steps//step_size 
+	if num_steps % step_size != 0:
+		steps_taken += 1
+	return steps_taken
+
+def build_mountain(num):
+	num_list = []
+	for i in range(1,num):
+		num_list.append(i)
+	length = len(num_list)
+	for j in range(num):
+		num_list.append(num-j)
+	return num_list
 
 def climb_one_two_one(num_steps):
 	"""
@@ -43,7 +56,19 @@ def climb_one_two_one(num_steps):
 
 			the answer is 12.
 	"""
-	pass
+	num_list = []
+	num_strides = 0
+	steps_taken = 0
+	for i in range(num_steps+1):
+		num_list = num_list + build_mountain(i)
+	print(num_list)
+	for x in num_list:
+		steps_taken += x
+		num_strides += 1
+		if steps_taken >= num_steps:
+			break
+	return num_strides
+
 
 def climb_with_plan(num_steps, plan):
 	"""
@@ -64,7 +89,17 @@ def climb_with_plan(num_steps, plan):
 			>>> None
 			>>> bad plan!
 	"""
-	pass
+	steps_taken = 0
+	num_strides = 0
+	for x in plan:
+		steps_taken += x
+		num_strides += 1
+		if steps_taken >= num_steps:
+			return num_strides
+			break
+	if steps_taken < num_steps:
+		return None
+
 
 def climb_one_or_two(num_steps, holes):
 	"""
@@ -128,5 +163,7 @@ def climb_one_or_two_or_three(num_steps, holes):
 	don't spend forever i will feel bad :(
 	"""
 	pass
+
+print(climb_with_plan(19, [4, 6, 4, 1, 2, 9, 0, 0, 0, 0, 0, 100]))
 
 
