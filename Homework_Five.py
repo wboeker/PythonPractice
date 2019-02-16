@@ -128,7 +128,29 @@ def climb_one_or_two(num_steps, holes):
 		6 steps!
 		HINT: use recursion or iterative methodz up to you!
 	"""
-	pass
+	num_list = []
+	num_strides = 0
+	steps_taken = 0
+	bBoolean = True
+	for i in range(1,num_steps+1):
+		bBoolean = True
+		for x in holes:
+			if x == i:
+				bBoolean = False
+		if bBoolean:
+			num_list.append(i)
+	print(num_list)
+	for i in range(len(num_list)-1):
+		if steps_taken >= num_steps:
+			break;
+		if num_list[i+1] == num_list[i]+1:
+			steps_taken += 2
+			num_strides += 1
+		else:
+			steps_taken += 1
+			num_strides += 1
+	return num_strides
+
 
 def climb_one_or_two_or_three(num_steps, holes):
 	"""
@@ -162,8 +184,34 @@ def climb_one_or_two_or_three(num_steps, holes):
 
 	don't spend forever i will feel bad :(
 	"""
-	pass
+	#building list without holes
+	num_list = []
+	num_strides = 0
+	steps_taken = 0
+	bBoolean = True
+	for i in range(1,num_steps+1):
+		bBoolean = True
+		for x in holes:
+			if x == i:
+				bBoolean = False
+		if bBoolean:
+			num_list.append(i)
 
-print(climb_with_plan(19, [4, 6, 4, 1, 2, 9, 0, 0, 0, 0, 0, 100]))
+	#counting steps
+	for i in range(len(num_list)-1):
+		if steps_taken >= num_steps:
+			break;
+		if num_list[i+1] == num_list[i]+2:
+			steps_taken += 3
+		elif num_list[i+1] == num_list[i]+1:
+			steps_taken += 2
+		else:
+			steps_taken += 1
+		num_strides +=1
+	return num_strides
+
+holes = [2, 5]
+num_steps = 10
+print(climb_one_or_two_or_three(num_steps, holes))
 
 
