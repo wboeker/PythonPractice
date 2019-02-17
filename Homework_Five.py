@@ -128,6 +128,7 @@ def climb_one_or_two(num_steps, holes):
 		6 steps!
 		HINT: use recursion or iterative methodz up to you!
 	"""
+	"""
 	num_list = []
 	num_strides = 0
 	steps_taken = 0
@@ -150,7 +151,17 @@ def climb_one_or_two(num_steps, holes):
 			steps_taken += 1
 			num_strides += 1
 	return num_strides
-
+	"""
+	new_array = [num_steps-x for x in holes]
+	new_set = set(new_array)
+	def helper(k):
+		if k in new_set:
+			return float("inf")
+		if k <= 0:
+			return 0
+		else:
+			return 1 + min(helper(k-1), helper(k-2))
+	return helper(num_steps)
 
 def climb_one_or_two_or_three(num_steps, holes):
 	"""
@@ -210,8 +221,6 @@ def climb_one_or_two_or_three(num_steps, holes):
 		num_strides +=1
 	return num_strides
 
-holes = [2, 5]
+holes = [2,5,7,9]
 num_steps = 10
-print(climb_one_or_two_or_three(num_steps, holes))
-
-
+print(climb_one_or_two(num_steps, holes))
